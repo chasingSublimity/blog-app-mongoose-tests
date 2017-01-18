@@ -16,7 +16,7 @@ app.use(bodyParser.json());
 mongoose.Promise = global.Promise;
 
 
-app.get('/posts', (req, res) => {
+app.get('/blog-posts', (req, res) => {
   BlogPost
     .find()
     .exec()
@@ -29,7 +29,7 @@ app.get('/posts', (req, res) => {
     });
 });
 
-app.get('/posts/:id', (req, res) => {
+app.get('/blog-posts/:id', (req, res) => {
   BlogPost
     .findById(req.params.id)
     .exec()
@@ -40,7 +40,7 @@ app.get('/posts/:id', (req, res) => {
     });
 });
 
-app.post('/posts', (req, res) => {
+app.post('/blog-posts', (req, res) => {
   const requiredFields = ['title', 'content', 'author'];
   requiredFields.forEach(field => {
     if (!(field in req.body)) {
@@ -63,7 +63,7 @@ app.post('/posts', (req, res) => {
 });
 
 
-app.delete('/posts/:id', (req, res) => {
+app.delete('/blog-posts/:id', (req, res) => {
   BlogPost
     .findByIdAndRemove(req.params.id)
     .exec()
@@ -77,7 +77,7 @@ app.delete('/posts/:id', (req, res) => {
 });
 
 
-app.put('/posts/:id', (req, res) => {
+app.put('/blog-posts/:id', (req, res) => {
   if (!(req.params.id && req.body.id && req.params.id === req.body.id)) {
     res.status(400).json({
       error: 'Request path id and request body id values must match'
@@ -95,12 +95,12 @@ app.put('/posts/:id', (req, res) => {
   BlogPost
     .findByIdAndUpdate(req.params.id, {$set: updated}, {new: true})
     .exec()
-    .then(updatedPost => res.status(201).json(updatedPost.apiRepr()))
+    .then(updatedPost => res.status(204).json(updatedPost.apiRepr()))
     .catch(err => res.status(500).json({message: 'Something went wrong'}));
 });
 
 
-app.delete('/:id', (req, res) => {
+app.delete('/blog-posts/:id', (req, res) => {
   BlogPosts
     .findByIdAndRemove(req.params.id)
     .exec()
