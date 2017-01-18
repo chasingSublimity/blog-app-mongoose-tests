@@ -126,6 +126,8 @@ function runServer(databaseUrl=DATABASE_URL, port=PORT) {
     mongoose.connect(databaseUrl, err => {
       if (err) {
         return reject(err);
+      } else {
+        console.log(`Connected to ${databaseUrl}`);
       }
       server = app.listen(port, () => {
         console.log(`Your app is listening on port ${port}`);
@@ -159,6 +161,6 @@ function closeServer() {
 // runs. but we also export the runServer command so other code (for instance, test code) can start the server as needed.
 if (require.main === module) {
   runServer().catch(err => console.error(err));
-};
+}
 
 module.exports = {runServer, app, closeServer};

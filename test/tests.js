@@ -13,6 +13,7 @@ const {BlogPost} = require('../models');
 const {app, runServer, closeServer} = require('../server');
 const {TEST_DATABASE_URL} = require('../config');
 
+console.log(BlogPost);
 // middleware
 chai.use(chaiHttp);
 
@@ -53,12 +54,12 @@ describe('Blog API Resource', function() {
 		return runServer(TEST_DATABASE_URL);
 	});
 
-	beforeEach(function() {
-		return seedBlogPostData;
-	});
+  beforeEach(function() {
+    return seedBlogPostData();
+  });
 
 	afterEach(function() {
-		return tearDownDb;
+		return tearDownDb();
 	});
 
 	after(function() {
@@ -109,3 +110,4 @@ describe('Blog API Resource', function() {
 	});
 
 });
+
