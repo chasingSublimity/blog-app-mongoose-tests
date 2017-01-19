@@ -2,3 +2,10 @@ language: node_js
 node_js: node
 services:
 - mongodb
+deploy:
+  provider: heroku
+  api_key:
+    secure: KUjz4TiChkRtkdSE6+4noQIvHe4t2HwQBNKOzwKhWx+E/TnziYF4XfaogNFg+gtuwUsWWfQ5kvAg8r7A2yiUZ8Ibs8gOlw9XU6nChlAzswfST75z4LdnpbhQKh7Dyek+k8zEoZ6K2Ih9fWwOTllPK3koInC+bpuqDSTOaRgkLHnzlUSPPSc7UV+ZrUEBPEKJl+gppo0Jgbm1YbwR7JwaF/a4i4SDPp2NRnZwnY7KJtALjC/qU6QSwckEfcnP+SCnVDLj6bH96Onh1VRgUQIGUGInn33w+blT2vpU2wu8MCTD8Rr2HnZ9XwpgRew4DVVnrsL5htLYMv1ORIY/kUuZV6MT3bGeEDbAXr8N0jrcYCxB2wZyy6xEueRUos1T9DFc794QKVMktPJkLwaH70iWRYv/v50t1Itr67eSTV9400voVtbuEckrDyoXQavUDZRqtEnuriZwwdrciLXjYyqgU8OuNDAZPbkA71S2rYChxLc+C2Ondh3+zg5RUpF0uWsFwzrGUw5ndTebJACFixO183YWk7FFb2Os7t5+ScFy+loMjxyMoi5BGI2jFXKGnq01x7pFNdPgxGHNkhJrRz9T6ZHZjVriY7ZgT4l1evNzXIymhESsBcMVmM9OD8PVAyzRmsmmZ46I9DS6EwKrEHHZWI9QmYBQwbYXVqxYpIHGtoY=
+  app: shrouded-springs-54801
+  on:
+    repo: chasingSublimity/blog-app-mongoose-tests
